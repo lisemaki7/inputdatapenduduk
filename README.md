@@ -1,0 +1,2 @@
+# inputdatapenduduk
+input data penduduk
