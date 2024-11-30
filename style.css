@@ -1,0 +1,171 @@
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #fbe5cf; /* Warna latar belakang utama */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px; /* Menambah lebar maksimum untuk halaman form */
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 20px;
+}
+
+.navigation {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #27ba31;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #227727;
+}
+
+.tombol{
+    width: 250px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #A67B5B;
+}
+
+.tombol:hover{
+    background-color: #6F4E37;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+#pendudukForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #A67B5B; /* Warna latar belakang form */
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1em;
+    color: white; /* Mengubah warna teks label agar kontras dengan latar belakang form */
+}
+
+input, select, textarea, button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #e0e0e0;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.page {
+    display: none;
+    width: 90%;
+    max-width: 600px; /* Menambah lebar maksimum untuk halaman form */
+    margin: 0 auto;
+}
+
+#inputPage {
+    display: block;
+}
+
+/* Gaya untuk tabel */
+#listPage {
+    max-width: 1400px; /* Menambah lebar maksimum untuk tabel */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; /* Membuat kolom tabel memiliki lebar yang sama */
+}
+
+thead {
+    background-color: #6F4E37;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 0.5px solid #c09264;
+    word-wrap: break-word; /* Membuat konten yang panjang membungkus ke baris berikutnya */
+}
+
+th {
+    text-align: center; /* Menyelaraskan teks di tengah pada judul tabel */
+}
+
+td {
+    text-align: left;
+}
+
+td:last-child {
+    text-align: center; /* Menyelaraskan tombol hapus di tengah */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9d5aa;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #d7ad7b;
+}
+
+/* Gaya untuk tombol hapus */
+.delete-btn {
+    background-color: #ab1d1d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #740d0d;
+}
+
+/* Gaya untuk notifikasi */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}

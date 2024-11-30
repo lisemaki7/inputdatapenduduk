@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Penduduk</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navigation">
+        <button class="tombol" onclick="showPage('inputPage')">Input Data Penduduk</button>
+        <button class="tombol" onclick="showPage('listPage')">Daftar Data Penduduk</button>
+    </div>
+    
+    <div id="inputPage" class="page">
+        <h1 style="font-size: 60px; color: #6F4E37;">Input Data Penduduk</h1>
+        <form id="pendudukForm">
+            <label for="nik">NIK:</label>
+            <input type="text" id="nik" name="nik" required>
+            
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="status">Status Pernikahan:</label>
+            <select id="status" name="status" required>
+                <option value="Belum Menikah">Belum Menikah</option>
+                <option value="Sudah Menikah">Sudah Menikah</option>
+            </select>
+            
+            <label for="province">Provinsi:</label>
+            <input type="text" id="province" name="province" required>
+            
+            <label for="city">Kota:</label>
+            <input type="text" id="city" name="city" required>
+            
+            <label for="postalCode">Kode Pos:</label>
+            <input type="text" id="postalCode" name="postalCode" required>
+            
+            <label for="occupation">Pekerjaan:</label>
+            <input type="text" id="occupation" name="occupation" required>
+            
+            <button type="submit" style="margin-top: 20px; border-radius: 20px;">Tambah</button>
+        </form>
+        <div id="notification" class="notification" style="display:none;">
+            Data berhasil ditambahkan!
+        </div>
+    </div>
+    
+    <div id="listPage" class="page" style="display:none;">
+        <h1 style="color: #6F4E37; font-size: 60px;">Daftar Data Penduduk</h1>
+        <table id="pendudukTable">
+            <thead>
+                <tr style="font-size: 20px;">
+                    <th>NIK</th>
+                    <th>Nama</th>
+                    <th>Status</th>
+                    <th>Provinsi</th>
+                    <th>Kota</th>
+                    <th>Kode Pos</th>
+                    <th>Pekerjaan</th>
+                    <th>Aksi</th> <!-- Kolom untuk tombol hapus -->
+                </tr>
+            </thead>
+            <tbody style="font-size: 20px; color: #6F4E37;">
+            </tbody>
+        </table>
+        <div id="deleteNotification" class="notification" style="display:none;">
+            Data berhasil dihapus!
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
