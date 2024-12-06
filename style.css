@@ -64,6 +64,40 @@ h1, h2 {
     margin-bottom: 30px;
 }
 
+/* Menyusun radio button secara horizontal */
+/* Styling the radio buttons */
+.radio-group input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+}
+
+/* Styling the dot inside the radio button */
+.radio-group input[type="radio"]::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+
+/* Change the color of the dot when checked */
+.radio-group input[type="radio"]:checked::before {
+    background: #5F4E37; /* Color of the dot */
+}
+
+
+
 label {
     font-weight: bold;
     font-size: 1em;
@@ -102,7 +136,7 @@ li {
 
 /* Gaya untuk tabel */
 #listPage {
-    max-width: 1400px; /* Menambah lebar maksimum untuk tabel */
+    max-width: 1800px; /* Menambah lebar maksimum untuk tabel */
 }
 
 table {
@@ -142,6 +176,28 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
     background-color: #d7ad7b;
 }
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.overlay-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+}
+
 
 /* Gaya untuk tombol hapus */
 .delete-btn {
