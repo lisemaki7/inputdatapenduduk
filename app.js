@@ -2,10 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pendudukForm = document.getElementById('pendudukForm');
     const pendudukTable = document.getElementById('pendudukTable').getElementsByTagName('tbody')[0];
     const notification = document.getElementById('notification');
-    const deleteNotification = document.getElementById('deleteNotification');
     let editingNIK = null;
 
-    // Memuat data dari localStorage saat halaman dimuat
+    // Load data from localStorage on page load
     loadPendudukData();
 
     pendudukForm.addEventListener('submit', (event) => {
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addPendudukToTable(penduduk);
             savePendudukData(penduduk);
         }
-        
+
         pendudukForm.reset();
         showNotification(notification);
     });
@@ -71,9 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
         editButton.classList.add('edit-btn');
-        editButton.onclick = () => {
-            editPendudukData(penduduk.nik);
-        };
+        editButton.addEventListener('click', () => editPendudukData(penduduk.nik));
         editCell.appendChild(editButton);
     }
 
@@ -110,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function editPendudukData(nik) {
         let pendudukData = JSON.parse(localStorage.getItem('pendudukData')) || [];
         const penduduk = pendudukData.find(p => p.nik === nik);
+
         if (penduduk) {
             document.getElementById('editNik').value = penduduk.nik;
             document.getElementById('editName').value = penduduk.name;
@@ -117,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('editBirthDate').value = penduduk.birthDate;
             document.querySelector(`input[name="editGender"][value="${penduduk.gender}"]`).checked = true;
             document.getElementById('editReligion').value = penduduk.religion;
-    
+
             const addressParts = penduduk.address.split(', ');
             document.getElementById('editProvince').value = addressParts[5];
             document.getElementById('editCity').value = addressParts[4];
@@ -125,22 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('editSubdistrict').value = addressParts[2];
             document.getElementById('editRT').value = addressParts[1].split(' ')[1];
             document.getElementById('editRW').value = addressParts[0].split(' ')[1];
-    
+
             document.getElementById('editOccupation').value = penduduk.occupation;
             document.querySelector(`input[name="editNationality"][value="${penduduk.nationality}"]`).checked = true;
             document.getElementById('editStatus').value = penduduk.status;
-    
+
             document.getElementById('editOverlay').style.display = 'flex';
         }
     }
 
-    function closeEditOverlay() {
-        document.getElementById('editOverlay').style.display = 'none';
-    }
-    
     document.getElementById('editPendudukForm').addEventListener('submit', (event) => {
         event.preventDefault();
-    
+
         const nik = document.getElementById('editNik').value;
         const name = document.getElementById('editName').value.toUpperCase();
         const birthPlace = document.getElementById('editBirthPlace').value.toUpperCase();
@@ -156,9 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const occupation = document.getElementById('editOccupation').value.toUpperCase();
         const nationality = document.querySelector('input[name="editNationality"]:checked').value.toUpperCase();
         const status = document.getElementById('editStatus').value.toUpperCase();
-    
+
         const address = `RT ${rt}/RW ${rw}, ${subdistrict}, ${district}, ${city}, ${province}`;
-    
         const updatedPenduduk = {
             nik: nik,
             name: name,
@@ -171,11 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
             nationality: nationality,
             status: status
         };
-    
+
         updatePendudukData(nik, updatedPenduduk);
-    
+
         document.getElementById('editOverlay').style.display = 'none';
-    });    
+    });
 
     function showNotification(notificationElement) {
         notificationElement.style.display = 'block';
@@ -184,142 +177,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 });
-
-function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => {
-        page.style.display = 'none';
-    });
-
-    const targetPage = document.getElementById(pageId);
-    targetPage.style.display = 'block';
-}
-
-function editPendudukData(nik) {
-    let pendudukData = JSON.parse(localStorage.getItem('pendudukData')) || [];
-    const penduduk = pendudukData.find(p => p.nik === nik);
-    if (penduduk) {
-        document.getElementById('editNik').value = penduduk.nik;
-        document.getElementById('editName').value = penduduk.name;
-        document.getElementById('editBirthPlace').value = penduduk.birthPlace;
-        document.getElementById('editBirthDate').value = penduduk.birthDate;
-        document.querySelector(`input[name="editGender"][value="${penduduk.gender}"]`).checked = true;
-        document.getElementById('editReligion').value = penduduk.religion;
-
-        const addressParts = penduduk.address.split(', ');
-        document.getElementById('editProvince').value = addressParts[5];
-        document.getElementById('editCity').value = addressParts[4];
-        document.getElementById('editDistrict').value = addressParts[3];
-        document.getElementById('editSubdistrict').value = addressParts[2];
-        document.getElementById('editRT').value = addressParts[1].split(' ')[1];
-        document.getElementById('editRW').value = addressParts[0].split(' ')[1];
-
-        document.getElementById('editOccupation').value = penduduk.occupation;
-        document.querySelector(`input[name="editNationality"][value="${penduduk.nationality}"]`).checked = true;
-        document.getElementById('editStatus').value = penduduk.status;
-
-        document.getElementById('editOverlay').style.display = 'flex';
-    }
-}
-
-function closeEditOverlay() {
-    document.getElementById('editOverlay').style.display = 'none';
-}
-
-document.getElementById('editPendudukForm').addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const nik = document.getElementById('editNik').value;
-    const name = document.getElementById('editName').value.toUpperCase();
-    const birthPlace = document.getElementById('editBirthPlace').value.toUpperCase();
-    const birthDate = document.getElementById('editBirthDate').value;
-    const gender = document.querySelector('input[name="editGender"]:checked').value.toUpperCase();
-    const religion = document.getElementById('editReligion').value.toUpperCase();
-    const province = document.getElementById('editProvince').value.toUpperCase();
-    const city = document.getElementById('editCity').value.toUpperCase();
-    const district = document.getElementById('editDistrict').value.toUpperCase();
-    const subdistrict = document.getElementById('editSubdistrict').value.toUpperCase();
-    const rt = document.getElementById('editRT').value;
-    const rw = document.getElementById('editRW').value;
-    const occupation = document.getElementById('editOccupation').value.toUpperCase();
-    const nationality = document.querySelector('input[name="editNationality"]:checked').value.toUpperCase();
-    const status = document.getElementById('editStatus').value.toUpperCase();
-
-    const address = `RT ${rt}/RW ${rw}, ${subdistrict}, ${district}, ${city}, ${province}`;
-
-    const updatedPenduduk = {
-        nik: nik,
-        name: name,
-        birthPlace: birthPlace,
-        birthDate: birthDate,
-        gender: gender,
-        religion: religion,
-        address: address,
-        occupation: occupation,
-        nationality: nationality,
-        status: status
-    };
-
-    updatePendudukData(nik, updatedPenduduk);
-
-    document.getElementById('editOverlay').style.display = 'none';
-});
-
-
-// Fungsi untuk menutup overlay setelah edit
-document.getElementById('editPendudukForm').addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const nik = document.getElementById('editNik').value;
-    const name = document.getElementById('editName').value.toUpperCase();
-    const birthPlace = document.getElementById('editBirthPlace').value.toUpperCase();
-    const birthDate = document.getElementById('editBirthDate').value;
-    const gender = document.querySelector('input[name="editGender"]:checked').value.toUpperCase();
-    const religion = document.getElementById('editReligion').value.toUpperCase();
-    const province = document.getElementById('editProvince').value.toUpperCase();
-    const city = document.getElementById('editCity').value.toUpperCase();
-    const district = document.getElementById('editDistrict').value.toUpperCase();
-    const subdistrict = document.getElementById('editSubdistrict').value.toUpperCase();
-    const rt = document.getElementById('editRT').value;
-    const rw = document.getElementById('editRW').value;
-    const occupation = document.getElementById('editOccupation').value.toUpperCase();
-    const nationality = document.querySelector('input[name="editNationality"]:checked').value.toUpperCase();
-    const status = document.getElementById('editStatus').value.toUpperCase();
-
-    const address = `RT ${rt}/RW ${rw}, ${subdistrict}, ${district}, ${city}, ${province}`;
-
-    const updatedPenduduk = {
-        nik: nik,
-        name: name,
-        birthPlace: birthPlace,
-        birthDate: birthDate,
-        gender: gender,
-        religion: religion,
-        address: address,
-        occupation: occupation,
-        nationality: nationality,
-        status: status
-    };
-
-    updatePendudukData(nik, updatedPenduduk);
-
-    document.getElementById('editOverlay').style.display = 'none';
-});
-
-function updatePendudukData(nik, updatedPenduduk) {
-    let pendudukData = JSON.parse(localStorage.getItem('pendudukData')) || [];
-    const index = pendudukData.findIndex(p => p.nik === nik);
-    if (index >= 0) {
-        pendudukData[index] = updatedPenduduk;
-        localStorage.setItem('pendudukData', JSON.stringify(pendudukData));
-        refreshPendudukTable();
-    }
-}
-
-function refreshPendudukTable() {
-    const pendudukTable = document.getElementById('pendudukTable').getElementsByTagName('tbody')[0];
-    while (pendudukTable.rows.length > 0) {
-        pendudukTable.deleteRow(0);
-    }
-    loadPendudukData();
-}
