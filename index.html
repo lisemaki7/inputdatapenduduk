@@ -5,32 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Penduduk</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Outfit:wght@100;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="navigation">
         <button class="tombol" onclick="showPage('inputPage')">Input Data Penduduk</button>
         <button class="tombol" onclick="showPage('listPage')">Daftar Data Penduduk</button>
     </div>
-
+    
     <div id="inputPage" class="page">
-        <h1>Input Data Penduduk</h1>
+        <h1 style="font-size: 60px; color: #6F4E37;">Input Data Penduduk</h1>
         <form id="pendudukForm">
             <label for="nik">NIK:</label>
             <input type="text" id="nik" name="nik" maxlength="16" pattern="\d{16}" required>
+
             <label for="name">Nama:</label>
             <input type="text" id="name" name="name" required>
+
             <label for="birthPlace">Tempat Lahir:</label>
             <input type="text" id="birthPlace" name="birthPlace" required>
+
             <label for="birthDate">Tanggal Lahir:</label>
             <input type="date" id="birthDate" name="birthDate" required>
+
             <label>Jenis Kelamin:</label>
             <div class="radio-group">
-                <input type="radio" id="male" name="gender" value="Laki-Laki" required>
-                <label for="male">Laki-Laki</label>
+                <input type="radio" id="male" name="gender" value="Laki-laki" required>
+                <label for="male">Laki-laki</label>
                 <input type="radio" id="female" name="gender" value="Perempuan" required>
                 <label for="female">Perempuan</label>
             </div>
+
             <label for="religion">Agama:</label>
             <select id="religion" name="religion" required>
                 <option value="Islam">Islam</option>
@@ -40,42 +47,44 @@
                 <option value="Buddha">Buddha</option>
                 <option value="Konghucu">Konghucu</option>
             </select>
-            <label for="province">Provinsi:</label>
-            <input type="text" id="province" name="province" required>
-            <label for="city">Kota:</label>
-            <input type="text" id="city" name="city" required>
-            <label for="district">Kecamatan:</label>
-            <input type="text" id="district" name="district" required>
-            <label for="subdistrict">Kelurahan:</label>
-            <input type="text" id="subdistrict" name="subdistrict" required>
-            <label for="rt">RT:</label>
-            <input type="text" id="rt" name="rt" required>
-            <label for="rw">RW:</label>
-            <input type="text" id="rw" name="rw" required>
+
+            <label for="address">Alamat:</label>
+            <input type="text" id="province" name="province" placeholder="Provinsi" required>
+            <input type="text" id="city" name="city" placeholder="Kota" required>
+            <input type="text" id="district" name="district" placeholder="Kecamatan" required>
+            <input type="text" id="subdistrict" name="subdistrict" placeholder="Kelurahan" required>
+            <input type="text" id="rt" name="rt" placeholder="RT" required>
+            <input type="text" id="rw" name="rw" placeholder="RW" required>
+
             <label for="occupation">Pekerjaan:</label>
             <input type="text" id="occupation" name="occupation" required>
+
             <label>Kewarganegaraan:</label>
             <div class="radio-group">
                 <input type="radio" id="wni" name="nationality" value="WNI" required>
                 <label for="wni">WNI</label>
-                <input type="radio" id="wna" name="nationality" value="WNA" required>
-                <label for="wna">WNA</label>
+                <input type="radio" id="wln" name="nationality" value="WLN" required>
+                <label for="wln">WLN</label>
             </div>
-            <label for="status">Status:</label>
+
+            <label for="status">Status Kehidupan:</label>
             <select id="status" name="status" required>
                 <option value="Hidup">Hidup</option>
                 <option value="Mati">Mati</option>
             </select>
-            <button type="submit">Tambah</button>
-        </form>
-        <div id="notification" class="notification" style="display:none;">Data berhasil ditambahkan!</div>
-    </div>
 
+            <button type="submit" style="margin-top: 20px; border-radius: 20px;">Tambah</button>
+        </form>
+        <div id="notification" class="notification" style="display:none;">
+            Data berhasil ditambahkan!
+        </div>
+    </div>
+    
     <div id="listPage" class="page" style="display:none;">
-        <h1>Daftar Data Penduduk</h1>
+        <h1 style="color: #6F4E37; font-size: 60px;">Daftar Data Penduduk</h1>
         <table id="pendudukTable">
             <thead>
-                <tr>
+                <tr style="font-size: 20px;">
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Tempat Lahir</th>
@@ -86,14 +95,18 @@
                     <th>Pekerjaan</th>
                     <th>Kewarganegaraan</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    <th>Aksi</th> <!-- Kolom untuk tombol hapus -->
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody style="font-size: 17px; color: #6F4E37;">
+            </tbody>
         </table>
-        <div id="deleteNotification" class="notification" style="display:none;">Data berhasil dihapus!</div>
-    </div>
-
+        <div id="deleteNotification" class="notification" style="display:none;">
+            Data berhasil dihapus!!
+        </div>
+    </div>   
+    
+    <script src="initData.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
