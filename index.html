@@ -11,9 +11,9 @@
 </head>
 <body>
     <div class="navigation">
-        <button class="tombol" onclick="showPage('inputPage')">Input Data Penduduk</button>
-        <button class="tombol" onclick="showPage('listPage')">Daftar Data Penduduk</button>
-    </div>
+        <button class="tombol" data-target="inputPage">Input Data Penduduk</button>
+        <button class="tombol" data-target="listPage">Daftar Data Penduduk</button>
+    </div>    
     
     <div id="inputPage" class="page">
         <h1 style="font-size: 60px; color: #6F4E37;">Input Data Penduduk</h1>
@@ -32,10 +32,10 @@
 
             <label>Jenis Kelamin:</label>
             <div class="radio-group">
-                <input type="radio" id="male" name="gender" value="Laki-laki" required>
+                <input type="radio" id="male" name="gender" value="laki-laki" required>
                 <label for="male">Laki-laki</label>
-                <input type="radio" id="female" name="gender" value="Perempuan" required>
-                <label for="female">Perempuan</label>
+                <input type="radio" id="female" name="gender" value="perempuan" required>
+                <label for="female">Perempuan</label>                
             </div>
 
             <label for="religion">Agama:</label>
