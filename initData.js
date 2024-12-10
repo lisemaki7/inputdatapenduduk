@@ -24,18 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 "occupation": "PETANI",
                 "nationality": "WNI",
                 "status": "HIDUP"
-            },
-            {
-                "nik": "6543210987658736",
-                "name": "AGUS",
-                "birthPlace": "PATI",
-                "birthDate": "1999-04-09",
-                "gender": "LAKI-LAKI",
-                "religion": "ISLAM",
-                "address": "RT 01/RW 02, SUKOLILO, SUKOLILO, PATI, JAWA TENGAH",
-                "occupation": "PENGANGGURAN",
-                "nationality": "WNI",
-                "status": "HIDUP"
             }
         ]
     };
